@@ -12,8 +12,10 @@ if(isset($_POST['create'])){
     $sql = "INSERT INTO books(title, author, type, description) VALUES('$title', '$author', '$type', '$description')";
     $result = mysqli_query($connect, $sql);
     if($result){
-        echo "Book added successfully.";
-        // header("Location: index.php");
+        session_start();
+      $_SESSION['create'] = "Book added successfully!";
+        header("Location: index.php");
+        exit();
     }else{
         die("Error: ".mysqli_error($connect));
     }
@@ -28,8 +30,9 @@ if(isset($_POST['update'])){
     $sql = "UPDATE books SET title='$title', author='$author', type='$type', description='$description' WHERE id=$id";
     $result = mysqli_query($connect, $sql);
     if($result){
-        echo "Book updated successfully.";
-        // header("Location: index.php");
+        session_start();
+        $_SESSION['update'] = "Book updated successfully!";
+        header("Location: index.php");
     }else{
         die("Error: ".mysqli_error($connect));
     }

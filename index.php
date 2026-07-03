@@ -18,6 +18,22 @@
              </div>
 
         </header>
+             <?php
+        session_start();
+        if(isset($_SESSION['create'])){
+            echo "<div class='alert alert-success'>".$_SESSION['create']."</div>";
+            unset($_SESSION['create']);
+        }
+         if(isset($_SESSION['update'])){
+            echo "<div class='alert alert-success'>".$_SESSION['update']."</div>";
+            unset($_SESSION['update']);
+        }
+        if(isset($_SESSION['delete'])){
+            echo "<div class='alert alert-success'>".$_SESSION['delete']."</div>";
+            unset($_SESSION['delete']);
+        }
+
+        ?>
        <!-- table -->
         <table class="table table-bordered">
             <thead>
